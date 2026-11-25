@@ -47,6 +47,8 @@ spec:
   minAvailable: "50%"
   selector:
     matchLabels:
-      project: roboshop    
+      project: roboshop   
+
+
 
       
