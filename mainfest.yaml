@@ -6,7 +6,6 @@ metadata:
     project: roboshop
     tier: frontend
     component: frontend
-    
 spec:
   replicas: 10
   selector:
@@ -14,29 +13,27 @@ spec:
       project: roboshop
       tier: frontend
       component: frontend
-      
   template:
     metadata:
       labels:
         project: roboshop
         tier: frontend
         component: frontend
-        
     spec:
       topologySpreadConstraints:
       - maxSkew: 1
-      topologyKey: topology.kubernetes.io/zone
-      whenUnsatisfiable: DoNotSchedule
-      labelSelector:
-        matchLabels:
-          project: roboshop
-          # tier: frontend
-          # component: frontend
-    containers:
-    - name: nginx
-      image: nginx:latest 
-      ports:
-      - containerPort: 80
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            project: roboshop
+            tier: frontend
+            component: frontend
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
 ---
 # apiVersion: v1
 # kind: Service
